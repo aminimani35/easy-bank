@@ -17,6 +17,10 @@ body {
   -webkit-box-shadow: 1px 0px 49px -12px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 0px 49px -12px rgba(0, 0, 0, 0.75);
   background-color: variable.$VeryLightGray;
+
+  & .hamburger-menu{
+    display: none;
+  }
 }
 
 .easy-bank-nav {
@@ -37,7 +41,7 @@ body {
     background: url("/assets/bg-intro-desktop.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    width: 50%;
+    flex: 1;
 
     & img {
       transform: translateX(300px);
@@ -51,7 +55,7 @@ body {
     //align-items: center;
     justify-content: center;
     padding: 2rem;
-    width: 50%;
+    flex: 1;
     padding-left: 10%;
 
     & h4 {
@@ -166,16 +170,18 @@ footer {
   font-weight: 300;
   display: flex;
   width: 100%;
+  padding: 40px 10%;
 
   & .social {
     flex: 1;
 
     & .logo {
-      & svg {
-        &:nth-child(2){
+      margin-bottom: 50px;
 
-          & path{
-            fill: variable.$White;
+      & svg {
+        & g:nth-child(2) {
+          & path:first-child {
+            fill: #fff;
           }
         }
       }
@@ -201,10 +207,123 @@ footer {
   }
 
   & .footer-nav {
+    display: flex;
+    flex-flow: column wrap;
+   & a{
+     display: block;
+     height: 30%;
+   }
     flex: 1;
+
+    & table {
+
+      color: #fff !important;
+
+      width: 100%;
+
+      & tbody tr td {
+        width: 50%;
+        padding: 10px;
+      }
+    }
   }
 
   & .copy-right {
-    flex: 2;
+    flex: 1.8;
+    text-align: right;
+
+    &__text {
+      color: variable.$GrayishBlue;
+      margin-top: 25px;
+    }
   }
 }
+
+
+@media screen and (min-width: 360px) and (max-width: 440px) {
+  .section , .article{
+    margin: 1rem 10% !important;
+  }
+  #appbar{
+    position: relative;
+    z-index: 5;
+    background-color: variable.$White;
+    & .btn{
+      display: none;
+    }
+    & .hamburger-menu{
+      display: inline-block;
+    }
+  }
+
+  .header{
+    text-align: center;
+    height: auto;
+    justify-content: center;
+    flex-flow: column-reverse wrap;
+    &__info{
+      text-align: center;
+    & button.btn{
+      margin: auto;
+    }
+    }
+
+    &__cover{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      & img{
+        width: 100%;
+        position: relative;
+        transform: translateY(-20px);
+
+      }
+    }
+  }
+
+  .easy-bank-nav {
+    display: none;
+  }
+
+
+
+
+  .article{
+    &__list{
+      flex-direction: column;
+      &-item{
+        width: 100%;
+      }
+    }
+  }
+
+  .services {
+    flex-direction: column;
+
+    & .card{
+      text-align: center;
+    }
+  }
+
+  footer{
+    flex-flow: column wrap;
+    text-align: center;
+
+    & .social{
+      & .icon__list{
+        justify-content: center;
+      }
+    }
+    & .footer-nav {
+      margin: 20px 0;
+      a{
+        text-align: center;
+        margin: 15px 0;
+      }
+    }
+   & .copy-right{
+     text-align: center;
+   }
+  }
+}
+
